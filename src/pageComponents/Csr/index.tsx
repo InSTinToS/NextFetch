@@ -1,21 +1,26 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
+import { useRouter } from 'next/router'
+
 import api from 'services/api'
-import { UserResType, UsersResType } from 'types/user'
-import Style from './styles'
-import Link from 'next/link'
+
+import ContentPage from 'components/ContentPage'
 import Card from 'components/Card'
+
+import { UserResType, UsersResType } from 'types/user'
 
 const Csr = () => {
   const [responseUsers, setResponseUsers] = useState<UsersResType>()
   const [responseUser, setResponseUser] = useState<UserResType>()
   const [loading, setLoading] = useState<boolean>(false)
 
+  const { query } = useRouter()
+
   const getUsers = async (id?: string) => {
     setLoading(true)
 
-    const response: UserResType | UsersResType = (
-      await api.get(id ? `users/${id}` : 'users')
-    ).data
+    const path = id ? `users/${id}` : 'users'
+    const response: UserResType | UsersResType = (await api.get(path)).data
 
     id ? setResponseUser(response) : setResponseUsers(response)
 
@@ -23,14 +28,15 @@ const Csr = () => {
   }
 
   useEffect(() => {
-    getUsers('1')
-  }, [])
+    getUsers()
+    getUsers(query.id as string)
+  }, [query.id])
 
   return (
-    <Style>
-      <Link href='/'>Voltar</Link>
-
+    <ContentPage>
       <h1>CSR</h1>
+
+      <span>Query ID: {query.id}</span>
 
       {responseUser?.success ? (
         <Card name={responseUser?.user?.name} id={responseUser?.user?.id} />
@@ -44,20 +50,13 @@ const Csr = () => {
         name='id'
         type='number'
         placeholder='Id'
-        onChange={event => getUsers(event.target.value)}
+        onChange={({ target }) => getUsers(target.value)}
       />
 
-      <button type='button' onClick={() => getUsers()}>
-        Obter todos os usuarios
-      </button>
-
       {responseUsers?.users.map(({ name, id }) => (
-        <ul key={id}>
-          <li>nome: {name}</li>
-          <li>id: {id}</li>
-        </ul>
+        <Card key={id} name={name} id={id} />
       ))}
-    </Style>
+    </ContentPage>
   )
 }
 

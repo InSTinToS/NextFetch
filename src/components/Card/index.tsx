@@ -8,6 +8,7 @@ interface CardProps {
 const Card = ({ id, name }: CardProps) => (
   <Style>
     <li>ID: {id}</li>
+
     <li>Nome: {name}</li>
   </Style>
 )

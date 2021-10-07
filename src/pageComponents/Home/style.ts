@@ -1,17 +1,15 @@
+import Minicard from 'components/Minicard'
+
 import styled from 'styled-components'
+
+export const CardLi = styled(Minicard)``
 
 const Style = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
 
-  height: 100vh;
-  text-align: center;
-
-  > * {
-    margin-top: 24px;
-  }
+  min-height: 100vh;
 `
 
 export default Style

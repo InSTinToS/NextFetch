@@ -14,12 +14,15 @@ export default createGlobalStyle`
 
     body {
       font-size: 1.6rem;
-      color: ${({ theme }) => theme.colors.primary}
+      
+      color: ${({ theme }) => theme.colors.secondary};
+      background-color: ${({ theme }) => theme.colors.background};
     }
   }
 
   a {
     text-decoration: none;
+    color: ${({ theme }) => theme.colors.secondary};
   }
 
   li {

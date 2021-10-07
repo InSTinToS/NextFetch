@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export type NextRoute<ResponseType> = (
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseType>
+  _req: NextApiRequest,
+  _res: NextApiResponse<ResponseType>
 ) => void
