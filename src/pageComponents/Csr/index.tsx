@@ -9,7 +9,7 @@ import Card from 'components/Card'
 
 import { UserResType, UsersResType } from 'types/user'
 
-const Csr = () => {
+const Csr = ({}) => {
   const [responseUsers, setResponseUsers] = useState<UsersResType>()
   const [responseUser, setResponseUser] = useState<UserResType>()
   const [loading, setLoading] = useState<boolean>(false)

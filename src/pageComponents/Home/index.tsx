@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import Style, { CardLi } from './style'
 
-const Home = () => {
+const Home = ({}) => {
   const router = useRouter()
 
   return (

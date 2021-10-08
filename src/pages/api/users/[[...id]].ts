@@ -7,7 +7,7 @@ const users = [
   { name: 'Jean', id: 3 }
 ]
 
-const user: NextRoute<UserResType | UsersResType> = (req, res) => {
+const user: NextRoute<UserResType & UsersResType> = (req, res) => {
   if (req.method === 'GET') {
     const { id } = req.query
 

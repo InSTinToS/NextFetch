@@ -47,48 +47,43 @@
           "disableSort": true
         },
         {
-          "regex": "^pageComponents",
+          "regex": "^locales",
           "orderLevel": 7,
           "disableSort": true
         },
         {
-          "regex": "^locales",
+          "regex": "^utils",
           "orderLevel": 8,
           "disableSort": true
         },
         {
-          "regex": "^utils",
+          "regex": "^services/api",
           "orderLevel": 9,
           "disableSort": true
         },
         {
-          "regex": "^services/api",
+          "regex": "^store",
           "orderLevel": 10,
           "disableSort": true
         },
         {
-          "regex": "^store",
+          "regex": "^hooks",
           "orderLevel": 11,
           "disableSort": true
         },
         {
-          "regex": "^hooks",
+          "regex": "^assets",
           "orderLevel": 12,
           "disableSort": true
         },
         {
-          "regex": "^assets",
+          "regex": "^components",
           "orderLevel": 13,
           "disableSort": true
         },
         {
-          "regex": "^components",
-          "orderLevel": 14,
-          "disableSort": true
-        },
-        {
           "regex": "^types",
-          "orderLevel": 15,
+          "orderLevel": 14,
           "disableSort": true
         }
       ]
