@@ -1,10 +1,11 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import Style, { CardLi } from './style'
+import Style from './style'
 
-const Home = ({}) => {
+import MiniCard from 'components/MiniCard'
+
+const Home = () => {
   const router = useRouter()
 
   return (
@@ -15,11 +16,9 @@ const Home = ({}) => {
 
       <main>
         <ul>
-          <CardLi onClick={() => router.push('/csr')}>CSR</CardLi>
+          <MiniCard onClick={() => router.push('/csr')}>CSR</MiniCard>
 
-          <CardLi onClick={() => router.push('/ssg')}>
-            <Link href='/ssg'>SSG</Link>
-          </CardLi>
+          <MiniCard onClick={() => router.push('/isr')}>ISR</MiniCard>
         </ul>
       </main>
     </Style>

@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
+import Style from './styles'
 
 import { useRouter } from 'next/router'
 
 import api from 'services/api'
 
 import ContentPage from 'components/ContentPage'
-import Card from 'components/Card'
+import Card from 'components/UserCard'
 
 import { UserResType, UsersResType } from 'types/user'
 
-const Csr = ({}) => {
+const Csr = () => {
   const [responseUsers, setResponseUsers] = useState<UsersResType>()
   const [responseUser, setResponseUser] = useState<UserResType>()
   const [loading, setLoading] = useState<boolean>(false)
@@ -34,28 +35,34 @@ const Csr = ({}) => {
 
   return (
     <ContentPage>
-      <h1>CSR</h1>
+      <Style>
+        <h1>CSR</h1>
 
-      <span>Query ID: {query.id}</span>
+        <span>Query ID: {query.id}</span>
 
-      {responseUser?.success ? (
-        <Card name={responseUser?.user?.name} id={responseUser?.user?.id} />
-      ) : (
-        <span>{responseUser?.message}</span>
-      )}
+        {responseUser?.success ? (
+          <Card name={responseUser?.user?.name} id={responseUser?.user?.id} />
+        ) : (
+          responseUser?.message && (
+            <div id='notFound'>{responseUser.message}</div>
+          )
+        )}
 
-      {loading ? <span>Carregando...</span> : <span>Digite um id</span>}
+        <div>
+          {loading ? <span>Carregando...</span> : <span>Digite um id: </span>}
 
-      <input
-        name='id'
-        type='number'
-        placeholder='Id'
-        onChange={({ target }) => getUsers(target.value)}
-      />
+          <input
+            name='id'
+            type='number'
+            placeholder='Id'
+            onChange={({ target }) => getUsers(target.value)}
+          />
+        </div>
 
-      {responseUsers?.users.map(({ name, id }) => (
-        <Card key={id} name={name} id={id} />
-      ))}
+        {responseUsers?.users.map(({ name, id }) => (
+          <Card key={id} name={name} id={id} />
+        ))}
+      </Style>
     </ContentPage>
   )
 }

@@ -9,11 +9,6 @@ const Style = styled.section`
   height: 100vh;
   text-align: center;
 
-  a {
-    position: absolute;
-    top: 24px;
-  }
-
   input {
     width: 48px;
     height: 32px;
@@ -24,19 +19,21 @@ const Style = styled.section`
   }
 
   article {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-    width: 80vw;
-    padding: 24px;
+    padding: 8px;
     border-radius: 24px;
+    width: clamp(250px, 70vw, 320px);
 
     background-color: ${({ theme }) => theme.colors.primary};
+  }
 
-    > * {
-      margin-top: 24px;
+  #backButton {
+    position: absolute;
+    top: 24px;
+  }
+
+  @media screen and (min-width: 320px) {
+    article {
+      padding: ${({ theme }) => theme.margin['3']};
     }
   }
 `

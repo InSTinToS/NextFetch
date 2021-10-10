@@ -9,7 +9,9 @@ interface ContentPageProps {
 
 const ContentPage = ({ children }: ContentPageProps) => (
   <Style>
-    <Link href='/'>Voltar</Link>
+    <div id='backButton'>
+      <Link href='/'>Voltar</Link>
+    </div>
 
     <article>{children}</article>
   </Style>
