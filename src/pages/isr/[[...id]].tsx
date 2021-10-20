@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 
 import api from 'services/api'
 
-import { UserResType, UsersResType } from 'types/user'
+import { TUserRes, TUsersRes } from 'types/routes/user'
 
 import IsrPage from 'pageComponents/Isr'
 
@@ -12,8 +12,10 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 })
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log(`Building slug: ${params.id}`)
+
   const path = params.id ? `users/${params.id}` : 'users'
-  const response: UsersResType & UserResType = (await api.get(path)).data
+  const response: TUsersRes & TUserRes = (await api.get(path)).data
 
   return { revalidate: 60, props: { response } }
 }

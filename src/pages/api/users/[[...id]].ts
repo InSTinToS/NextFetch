@@ -1,5 +1,5 @@
-import { UserResType, UsersResType } from 'types/user'
-import { NextRoute } from 'types/next'
+import { TUser, TUserRes, TUsersRes } from 'types/routes/user'
+import { TNextRoute } from 'types/next'
 
 const users = [
   { name: 'Miguel', id: 1 },
@@ -7,18 +7,28 @@ const users = [
   { name: 'Jean', id: 3 }
 ]
 
-const user: NextRoute<UserResType & UsersResType> = (req, res) => {
+const getUser = (id: string | string[]): TUser => {
+  const foundUser = users.find(data => data.id === Number(id))
+  return foundUser
+}
+
+const listAllUsers = () => users
+
+const user: TNextRoute<TUserRes & TUsersRes> = (req, res) => {
   if (req.method === 'GET') {
     const { id } = req.query
 
-    if (!id)
-      return res.json({
-        users,
-        success: true,
-        message: 'Fetch all users successfully!'
-      })
+    if (!id) {
+      const userList = listAllUsers()
 
-    const foundUser = users.find(data => data.id === Number(id))
+      return res.json({
+        success: true,
+        users: userList,
+        message: 'Fetch all users'
+      })
+    }
+
+    const foundUser = getUser(id)
 
     if (!foundUser)
       return res.json({

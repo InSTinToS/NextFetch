@@ -8,11 +8,11 @@ import api from 'services/api'
 import ContentPage from 'components/ContentPage'
 import Card from 'components/UserCard'
 
-import { UserResType, UsersResType } from 'types/user'
+import { TUserRes, TUsersRes } from 'types/routes/user'
 
 const Csr = () => {
-  const [responseUsers, setResponseUsers] = useState<UsersResType>()
-  const [responseUser, setResponseUser] = useState<UserResType>()
+  const [responseUsers, setResponseUsers] = useState<TUsersRes>()
+  const [responseUser, setResponseUser] = useState<TUserRes>()
   const [loading, setLoading] = useState<boolean>(false)
 
   const { query } = useRouter()
@@ -21,7 +21,7 @@ const Csr = () => {
     setLoading(true)
 
     const path = id ? `users/${id}` : 'users'
-    const response: UserResType | UsersResType = (await api.get(path)).data
+    const response: TUserRes | TUsersRes = (await api.get(path)).data
 
     id ? setResponseUser(response) : setResponseUsers(response)
 

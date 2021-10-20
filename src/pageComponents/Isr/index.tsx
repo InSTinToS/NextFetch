@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import Card from 'components/UserCard'
 import ContentPage from 'components/ContentPage'
 
-import { UserResType, UsersResType } from 'types/user'
+import { TUserRes, TUsersRes } from 'types/routes/user'
 
 export interface IsrProps {
-  response: UsersResType & UserResType
+  response: TUsersRes & TUserRes
 }
 
 const Isr = ({ response }: IsrProps) => {

@@ -7,8 +7,6 @@ import Document, {
   NextScript
 } from 'next/document'
 
-import favicon from '../../public/favicon.ico'
-
 import { ServerStyleSheet } from 'styled-components'
 
 class MyDocument extends Document {
@@ -46,7 +44,7 @@ class MyDocument extends Document {
         <Head>
           <meta charSet='utf-8' />
 
-          <link rel='icon' href={favicon} />
+          <link rel='icon' href='../../public/favicon.ico' />
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
             rel='stylesheet'

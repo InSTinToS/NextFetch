@@ -1,14 +1,16 @@
+import { Reducer } from 'store'
+
+import { TUser, TUserRes } from 'types/routes/user'
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { UserType, UserResType } from 'types/user'
-import { Reducer } from 'store'
 
 interface GetUserParams {
   id?: number
 }
 
 export interface UserState {
-  user?: UserType
+  user?: TUser
   loading: boolean
 }
 
@@ -20,7 +22,7 @@ export const getUser = createAsyncThunk(
   'user/getUser',
   async ({ id }: GetUserParams) => {
     const { data } = await axios.get(`api/users/${id}`)
-    const { success, user }: UserResType = data
+    const { success, user }: TUserRes = data
 
     if (success) return { user }
   }
