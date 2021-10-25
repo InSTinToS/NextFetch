@@ -1,5 +1,5 @@
 export interface TUser {
-  id: number
+  id: string
   name: string
 }
 

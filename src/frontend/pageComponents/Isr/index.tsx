@@ -2,10 +2,10 @@ import Style from './styles'
 
 import { useRouter } from 'next/router'
 
-import Card from 'components/UserCard'
-import ContentPage from 'components/ContentPage'
-
 import { TUserRes, TUsersRes } from 'types/routes/user'
+
+import ContentPage from 'frontend/components/ContentPage'
+import Card from 'frontend/components/UserCard'
 
 export interface IsrProps {
   response: TUsersRes & TUserRes

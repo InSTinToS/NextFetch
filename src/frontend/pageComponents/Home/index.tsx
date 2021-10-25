@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import Style from './style'
 
-import MiniCard from 'components/Minicard'
+import MiniCard from 'frontend/components/Minicard'
 
 const Home = () => {
   const router = useRouter()

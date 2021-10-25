@@ -1,3 +1,3 @@
-import Csr from 'pageComponents/Csr'
+import Csr from 'frontend/pageComponents/Csr'
 
 export default Csr

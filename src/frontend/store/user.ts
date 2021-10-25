@@ -1,9 +1,8 @@
-import { Reducer } from 'store'
-
 import { TUser, TUserRes } from 'types/routes/user'
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { Reducer } from 'frontend/store'
 
 interface GetUserParams {
   id?: number

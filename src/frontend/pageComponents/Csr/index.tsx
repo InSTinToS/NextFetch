@@ -3,12 +3,11 @@ import Style from './styles'
 
 import { useRouter } from 'next/router'
 
-import api from 'services/api'
-
-import ContentPage from 'components/ContentPage'
-import Card from 'components/UserCard'
-
 import { TUserRes, TUsersRes } from 'types/routes/user'
+
+import ContentPage from 'frontend/components/ContentPage'
+import Card from 'frontend/components/UserCard'
+import api from 'frontend/services/api'
 
 const Csr = () => {
   const [responseUsers, setResponseUsers] = useState<TUsersRes>()
