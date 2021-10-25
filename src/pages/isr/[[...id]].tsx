@@ -7,7 +7,7 @@ import { TUserRes, TUsersRes } from 'types/routes/user'
 import IsrPage from 'pageComponents/Isr'
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  fallback: true,
+  fallback: 'blocking',
   paths: [{ params: { id: ['1'] } }, { params: { id: ['2'] } }]
 })
 
