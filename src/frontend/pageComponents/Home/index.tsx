@@ -19,6 +19,8 @@ const Home = () => {
           <MiniCard onClick={() => router.push('/csr')}>CSR</MiniCard>
 
           <MiniCard onClick={() => router.push('/isr')}>ISR</MiniCard>
+
+          <MiniCard onClick={() => router.push('/ssr')}>SSR</MiniCard>
         </ul>
       </main>
     </Style>
