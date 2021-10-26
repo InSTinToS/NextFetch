@@ -2,7 +2,7 @@ import Style from './styles'
 
 interface UserCardProps {
   name: string
-  id: number
+  id: string
 }
 
 const UserCard = ({ id, name }: UserCardProps) => (

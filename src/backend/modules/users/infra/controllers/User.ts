@@ -2,10 +2,14 @@ import FindUserService from '../services/findUser'
 import UsersRepository from '../repositories/Users'
 
 import { TUser } from 'types/routes/user'
-import { TNextRoute } from 'types/next'
+import { TDefaultRes, TNextRoute } from 'types/next'
+
+interface IndexResponse extends TDefaultRes {
+  user: TUser | TUser[]
+}
 
 class UserController {
-  public index: TNextRoute<TUser | TUser[]> = async (req, res) => {
+  public index: TNextRoute<IndexResponse> = async (req, res) => {
     const usersRepository = new UsersRepository()
     const findUserService = new FindUserService(usersRepository)
 

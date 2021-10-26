@@ -5,18 +5,18 @@ import IUsersRepository, {
 
 import { TUser } from 'types/routes/user'
 
-const fakeUserRepository: TUser[] = [
-  { name: 'Miguel', id: '1' },
-  { name: 'Gabriel', id: '2' },
-  { name: 'Jean', id: '3' },
-  { name: 'João', id: '4' },
-  { name: 'André', id: '5' }
-]
-
 class UsersRepository implements IUsersRepository {
   private usersRepository: TUser[]
 
   constructor() {
+    const fakeUserRepository: TUser[] = [
+      { name: 'Miguel', id: '1' },
+      { name: 'Gabriel', id: '2' },
+      { name: 'Jean', id: '3' },
+      { name: 'João', id: '4' },
+      { name: 'André', id: '5' }
+    ]
+
     this.usersRepository = fakeUserRepository
   }
 

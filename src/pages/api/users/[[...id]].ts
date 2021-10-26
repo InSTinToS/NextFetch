@@ -3,7 +3,7 @@ import { TNextRoute } from 'types/next'
 
 import UserController from 'backend/modules/users/infra/controllers/User'
 
-const user: TNextRoute<TUserRes & TUsersRes> = async (req, res) => {
+const user: TNextRoute<TUserRes | TUsersRes> = async (req, res) => {
   const userController = new UserController()
 
   switch (req.method) {

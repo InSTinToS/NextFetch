@@ -1,19 +1,21 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { TUserRes, TUsersRes } from 'types/routes/user'
+import { TUser } from 'types/routes/user'
 
+import UsersRepository from 'backend/modules/users/infra/repositories/Users'
+import FindUserService from 'backend/modules/users/infra/services/findUser'
 import IsrPage from 'frontend/pageComponents/Isr'
-import api from 'frontend/services/api'
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  fallback: 'blocking',
+  fallback: false,
   paths: [{ params: { id: ['1'] } }, { params: { id: ['2'] } }]
 })
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const path = params.id ? `users/${params.id}` : 'users'
+  const usersRepositories = new UsersRepository()
+  const findUserService = new FindUserService(usersRepositories)
 
-  const response: TUsersRes & TUserRes = (await api.get(path)).data
+  const response: TUser | TUser[] = await findUserService.execute(params.id)
 
   return { revalidate: 60, props: { response } }
 }

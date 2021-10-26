@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-interface TDefaultRes {
+export interface TDefaultRes {
   message: string
   success: boolean
 }
 
 export type TNextRoute<ResponseType> = (
   req: NextApiRequest,
-  res: NextApiResponse<ResponseType extends TDefaultRes>
-) => Promise<ResponseType extends TDefaultRes>
+  res: NextApiResponse<ResponseType>
+) => Promise<any>

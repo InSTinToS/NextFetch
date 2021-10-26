@@ -8,10 +8,10 @@ import ContentPage from 'frontend/components/ContentPage'
 import Card from 'frontend/components/UserCard'
 
 export interface IsrProps {
-  response: TUsersRes & TUserRes
+  response?: TUsersRes & TUserRes
 }
 
-const Isr = ({ response }: IsrProps) => {
+const Isr = ({ response }) => {
   const { push, isFallback } = useRouter()
 
   if (isFallback) return <div>Carregando..</div>
