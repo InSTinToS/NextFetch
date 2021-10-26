@@ -33,7 +33,7 @@ const Style = styled.section`
 
   @media screen and (min-width: 320px) {
     article {
-      padding: ${({ theme }) => theme.margin['3']};
+      padding: ${({ theme }) => theme.sizes['3']};
     }
   }
 `

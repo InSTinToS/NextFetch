@@ -19,7 +19,7 @@ const Style = styled.div`
 
   > * {
     width: 100%;
-    margin-top: ${({ theme }) => theme.margin['2']};
+    margin-top: ${({ theme }) => theme.sizes['2']};
   }
 `
 

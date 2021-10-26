@@ -6,8 +6,8 @@ export const Card = styled.li.attrs({ className: 'Card' })`
   flex-direction: column;
   justify-content: center;
 
-  padding: 8px;
-  border-radius: 8px;
+  padding: ${({ theme }) => theme.sizes['2']};
+  border-radius: ${({ theme }) => theme.sizes['2']};
 
   background-color: ${({ theme }) => theme.colors.background};
 
@@ -16,7 +16,7 @@ export const Card = styled.li.attrs({ className: 'Card' })`
   }
 
   > div + div {
-    margin-top: 8px;
+    margin-top: ${({ theme }) => theme.sizes['2']};
   }
 `
 

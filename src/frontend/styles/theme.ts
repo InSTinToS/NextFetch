@@ -5,15 +5,7 @@ const theme = {
     secondary: '#fcfcfc',
     background: '#121214'
   },
-  glass: {
-    primary: {
-      backdropFilter: 'blur(1.1px)',
-      background: 'rgba(130, 87, 230, 0.4)',
-      border: '1px solid rgba(130, 87, 230, 0.2)',
-      shadow: '8px 8px 5px 0 rgba(130, 87, 230, 0.2)'
-    }
-  },
-  margin: {
+  sizes: {
     '1': '4px',
     '2': '8px',
     '3': '16px',

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { UsersResType } from 'types/routes/users'
 
 import ContentPage from 'frontend/components/ContentPage'
+import Button from 'frontend/components/Html/Button'
 import UsersCards from 'frontend/components/UsersCards'
 
 export interface IsrProps {
@@ -21,17 +22,15 @@ const Isr = ({ usersRes }) => {
       <Style>
         <h1>Isr</h1>
 
-        <button type='button' onClick={() => push('/isr/1')}>
-          Usuário 1
-        </button>
+        <Button onClick={() => push('/isr/1')}>Usuário 1</Button>
 
-        <button type='button' onClick={() => push('/isr/2')}>
-          Usuário 2
-        </button>
+        <Button onClick={() => push('/isr/2')}>Usuário 2</Button>
 
-        <button type='button' onClick={() => push('/isr/3')}>
-          Usuário 3
-        </button>
+        <Button onClick={() => push('/isr/3')}>Usuário 3</Button>
+
+        <Button onClick={() => push('/isr/4')}>Usuário 4</Button>
+
+        <Button onClick={() => push('/isr/5')}>Usuário 5</Button>
 
         <UsersCards usersRes={usersRes} />
       </Style>
