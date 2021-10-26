@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { UsersResType } from 'types/routes/users'
 
 import ContentPage from 'frontend/components/ContentPage'
-import Card from 'frontend/components/UserCard'
+import UsersCards from 'frontend/components/UsersCards'
 
 export interface IsrProps {
   usersRes?: UsersResType
@@ -13,8 +13,6 @@ export interface IsrProps {
 
 const Isr = ({ usersRes }) => {
   const { push, isFallback } = useRouter()
-
-  console.log(usersRes)
 
   if (isFallback) return <div>Carregando..</div>
 
@@ -35,13 +33,7 @@ const Isr = ({ usersRes }) => {
           Usuário 3
         </button>
 
-        {usersRes?.success ? (
-          usersRes.users.map(({ name, id }) => (
-            <Card key={id} name={name} id={id} />
-          ))
-        ) : (
-          <div>{usersRes?.message}</div>
-        )}
+        <UsersCards usersRes={usersRes} />
       </Style>
     </ContentPage>
   )

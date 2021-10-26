@@ -15,10 +15,6 @@ const Style = styled.div`
     }
   }
 
-  .UserCard {
-    margin-top: ${({ theme }) => theme.margin['2']};
-  }
-
   @media screen and (min-width: 500px) {
     button {
       width: auto;

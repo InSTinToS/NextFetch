@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { UsersResType } from 'types/routes/users'
 
 import ContentPage from 'frontend/components/ContentPage'
-import Card from 'frontend/components/UserCard'
+import UsersCards from 'frontend/components/UsersCards'
 import api from 'frontend/services/api'
 
 const Csr = () => {
@@ -51,13 +51,7 @@ const Csr = () => {
           />
         </div>
 
-        {usersRes?.success ? (
-          usersRes.users.map(({ name, id }) => (
-            <Card key={id} name={name} id={id} />
-          ))
-        ) : (
-          <div>{usersRes?.message}</div>
-        )}
+        <UsersCards usersRes={usersRes} />
       </Style>
     </ContentPage>
   )
