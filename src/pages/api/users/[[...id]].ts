@@ -1,9 +1,9 @@
-import { TUserRes, TUsersRes } from 'types/routes/user'
-import { TNextRoute } from 'types/next'
+import { UsersResType } from 'types/routes/users'
+import { NextRouteType } from 'types/next'
 
 import UserController from 'backend/modules/users/infra/controllers/User'
 
-const user: TNextRoute<TUserRes | TUsersRes> = async (req, res) => {
+const user: NextRouteType<UsersResType> = async (req, res) => {
   const userController = new UserController()
 
   switch (req.method) {

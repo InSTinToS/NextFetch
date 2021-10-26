@@ -1,12 +1,12 @@
-import { TUser } from 'types/routes/user'
+import { UsersType } from 'types/routes/users'
 
 interface IUsersRepository {
-  findUser: TFindUser
-  listUsers: TListUsers
+  findUser: FindUserType
+  listUsers: ListUsersType
 }
 
-export type TFindUser = (id: string | string[]) => Promise<TUser>
+export type FindUserType = (id: string | string[]) => Promise<UsersType | null>
 
-export type TListUsers = () => Promise<TUser[]>
+export type ListUsersType = () => Promise<UsersType | null>
 
 export default IUsersRepository

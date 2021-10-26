@@ -40,3 +40,18 @@ if (fallback === false) return '404 se o path pesquisado no navegador não for e
 if (fallback === true) return 'tenta renderizar o componente antes de hidratar (torna-lo interativo) para mostrar um loading utilizando router.isFallback'
 
 if(fallback=== 'blocking') return 'o processo de hidratação é feito no servidor igual ao SSR'
+
+### Types names
+
+## global
+
+AlgumTipoType = tipagem de types e interfaces criados simplesmente para tipar (padrão)
+AlgumTipoResType = tipagem de response a api deve extender DefaultResType
+AlgumTipoReqType = tipagem de request a api
+
+## frontend
+
+AlgumTipoProps = tipagem de props de algum react component
+AlgumTipoState = tipagem relacionada ao redux
+
+## backend

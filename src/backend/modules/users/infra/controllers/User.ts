@@ -1,22 +1,32 @@
 import FindUserService from '../services/findUser'
 import UsersRepository from '../repositories/Users'
 
-import { TUser } from 'types/routes/user'
-import { TDefaultRes, TNextRoute } from 'types/next'
+import { UsersResType, UsersType } from 'types/routes/users'
+import { NextRouteType } from 'types/next'
 
-interface IndexResponse extends TDefaultRes {
-  user: TUser | TUser[]
+type UserIndexType = (id: string | string[]) => Promise<UsersType>
+
+export const UserIndex: UserIndexType = async id => {
+  const usersRepository = new UsersRepository()
+  const findUserService = new FindUserService(usersRepository)
+
+  const user = await findUserService.execute(id)
+  return user
 }
 
 class UserController {
-  public index: TNextRoute<IndexResponse> = async (req, res) => {
-    const usersRepository = new UsersRepository()
-    const findUserService = new FindUserService(usersRepository)
+  public index: NextRouteType<UsersResType> = async (req, res) => {
+    const { id } = req.query
+    const users = await UserIndex(id)
 
-    const user = await findUserService.execute(req.query.id)
+    if (!users)
+      res.json({
+        success: false,
+        message: `Not found user with id: ${id}`
+      })
 
-    return res.json({
-      user,
+    res.json({
+      users,
       success: true,
       message: 'Fetch completed!'
     })

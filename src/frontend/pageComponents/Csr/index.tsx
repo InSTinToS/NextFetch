@@ -3,15 +3,14 @@ import Style from './styles'
 
 import { useRouter } from 'next/router'
 
-import { TUserRes, TUsersRes } from 'types/routes/user'
+import { UsersResType } from 'types/routes/users'
 
 import ContentPage from 'frontend/components/ContentPage'
 import Card from 'frontend/components/UserCard'
 import api from 'frontend/services/api'
 
 const Csr = () => {
-  const [responseUsers, setResponseUsers] = useState<TUsersRes>()
-  const [responseUser, setResponseUser] = useState<TUserRes>()
+  const [usersRes, setUsersRes] = useState<UsersResType>()
   const [loading, setLoading] = useState<boolean>(false)
 
   const { query } = useRouter()
@@ -20,17 +19,21 @@ const Csr = () => {
     setLoading(true)
 
     const path = id ? `users/${id}` : 'users'
-    const response: TUserRes | TUsersRes = (await api.get(path)).data
 
-    id ? setResponseUser(response) : setResponseUsers(response)
+    const response = (await api.get(path)).data
+
+    setUsersRes(response)
 
     setLoading(false)
   }
 
   useEffect(() => {
-    getUsers()
     getUsers(query.id as string)
   }, [query.id])
+
+  useEffect(() => {
+    console.log(usersRes)
+  }, [usersRes])
 
   return (
     <ContentPage>
@@ -39,14 +42,6 @@ const Csr = () => {
 
         <span>Query ID: {query.id}</span>
 
-        {responseUser?.success ? (
-          <Card name={responseUser?.user?.name} id={responseUser?.user?.id} />
-        ) : (
-          responseUser?.message && (
-            <div id='notFound'>{responseUser.message}</div>
-          )
-        )}
-
         <div>
           {loading ? <span>Carregando...</span> : <span>Digite um id: </span>}
 
@@ -54,13 +49,19 @@ const Csr = () => {
             name='id'
             type='number'
             placeholder='Id'
-            onChange={({ target }) => getUsers(target.value)}
+            onChange={({ target }) => {
+              getUsers(target.value)
+            }}
           />
         </div>
 
-        {responseUsers?.users.map(({ name, id }) => (
-          <Card key={id} name={name} id={id} />
-        ))}
+        {usersRes?.success ? (
+          usersRes.users.map(({ name, id }) => (
+            <Card key={id} name={name} id={id} />
+          ))
+        ) : (
+          <div>{usersRes?.message}</div>
+        )}
       </Style>
     </ContentPage>
   )

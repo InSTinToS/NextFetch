@@ -1,12 +1,12 @@
 import IUsersRepository from '../../repositories/IUsers'
 
-import { TUser } from 'types/routes/user'
+import { UsersType } from 'types/routes/users'
 
 class FindUserService {
   constructor(private usersRepository: IUsersRepository) {}
 
   public execute: TFindUser = async id => {
-    let response: TUser | TUser[]
+    let response: UsersType
 
     if (id) response = await this.usersRepository.findUser(id)
     else response = await this.usersRepository.listUsers()
@@ -15,6 +15,6 @@ class FindUserService {
   }
 }
 
-type TFindUser = (id?: string | string[]) => Promise<TUser | TUser[]>
+type TFindUser = (id?: string | string[]) => Promise<UsersType | null>
 
 export default FindUserService

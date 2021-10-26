@@ -1,32 +1,32 @@
-import IUsersRepository, {
-  TFindUser,
-  TListUsers
-} from '../../repositories/IUsers'
+import { UserType } from 'types/routes/users'
 
-import { TUser } from 'types/routes/user'
+import IUsersRepository, {
+  FindUserType,
+  ListUsersType
+} from 'backend/modules/users/repositories/IUsers'
+
+const fakeUserRepository: UserType[] = [
+  { name: 'Miguel', id: '1' },
+  { name: 'Gabriel', id: '2' },
+  { name: 'Jean', id: '3' },
+  { name: 'João', id: '4' },
+  { name: 'André', id: '5' }
+]
 
 class UsersRepository implements IUsersRepository {
-  private usersRepository: TUser[]
+  private usersRepository: UserType[]
 
   constructor() {
-    const fakeUserRepository: TUser[] = [
-      { name: 'Miguel', id: '1' },
-      { name: 'Gabriel', id: '2' },
-      { name: 'Jean', id: '3' },
-      { name: 'João', id: '4' },
-      { name: 'André', id: '5' }
-    ]
-
     this.usersRepository = fakeUserRepository
   }
 
-  public findUser: TFindUser = async id => {
+  public findUser: FindUserType = async id => {
     const foundUser = this.usersRepository.find(data => data.id === id[0])
 
-    return foundUser
+    return foundUser ? [foundUser] : null
   }
 
-  public listUsers: TListUsers = async () => this.usersRepository
+  public listUsers: ListUsersType = async () => this.usersRepository
 }
 
 export default UsersRepository
