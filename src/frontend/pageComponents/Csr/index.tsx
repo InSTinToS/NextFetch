@@ -31,10 +31,6 @@ const Csr = () => {
     getUsers(query.id as string)
   }, [query.id])
 
-  useEffect(() => {
-    console.log(usersRes)
-  }, [usersRes])
-
   return (
     <ContentPage>
       <Style>

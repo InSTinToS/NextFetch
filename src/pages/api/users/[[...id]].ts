@@ -24,7 +24,10 @@ const user: NextRouteType<UsersResType> = async (req, res) => {
       break
 
     default:
-      console.log('unexpected default inside user switch')
+      res.json({
+        success: true,
+        message: 'Unexpected default inside user switch'
+      })
   }
 }
 

@@ -14,7 +14,7 @@ export interface IsrProps {
 const Isr = ({ usersRes }) => {
   const { push, isFallback } = useRouter()
 
-  const users = usersRes?.users
+  console.log(usersRes)
 
   if (isFallback) return <div>Carregando..</div>
 
@@ -35,10 +35,12 @@ const Isr = ({ usersRes }) => {
           Usuário 3
         </button>
 
-        {users?.lenght === 0 ? (
-          <Card id={users.id} key={users.id} name={users.name} />
+        {usersRes?.success ? (
+          usersRes.users.map(({ name, id }) => (
+            <Card key={id} name={name} id={id} />
+          ))
         ) : (
-          users.map(({ name, id }) => <Card key={id} name={name} id={id} />)
+          <div>{usersRes?.message}</div>
         )}
       </Style>
     </ContentPage>
