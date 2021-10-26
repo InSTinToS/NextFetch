@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Style from './styles'
 
 import { useRouter } from 'next/router'
 
@@ -33,26 +32,24 @@ const Csr = () => {
 
   return (
     <ContentPage>
-      <Style>
-        <h1>CSR</h1>
+      <h1>CSR</h1>
 
-        <span>Query ID: {query.id}</span>
+      <span>Query ID: {query.id}</span>
 
-        <div>
-          {loading ? <span>Carregando...</span> : <span>Digite um id: </span>}
+      <div>
+        {loading ? <span>Carregando...</span> : <span>Digite um id: </span>}
 
-          <input
-            name='id'
-            type='number'
-            placeholder='Id'
-            onChange={({ target }) => {
-              getUsers(target.value)
-            }}
-          />
-        </div>
+        <input
+          name='id'
+          type='number'
+          placeholder='Id'
+          onChange={({ target }) => {
+            getUsers(target.value)
+          }}
+        />
+      </div>
 
-        <UsersCards usersRes={usersRes} />
-      </Style>
+      <UsersCards usersRes={usersRes} />
     </ContentPage>
   )
 }
