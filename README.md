@@ -8,6 +8,8 @@ O next possui uma forma para resolver este problema denominado Pre-rendering ent
 
 (Descosiderando Pre-rendering)
 
+✔️ Tempo de Build
+
 ✔️ Alterações (Atualização automática quando algum dado é alterado no DB basta fazer o refresh da página)
 
 ❌ Velocidade (Tempo de loading inicial muito lento)
@@ -15,6 +17,14 @@ O next possui uma forma para resolver este problema denominado Pre-rendering ent
 ❌ SEO (Primeiro é retornado uma página em branco para o navegador dificultando o trabalho dos crawlers)
 
 ## SSR (Server Side Rendering)
+
+SSR é a a forma mais padrão ao acessar alguma página o navegador faz a request para um servidor e não mostra nada até que o servidor retorne á pagina completa não possui um loading inicial tão lento quanto um CSR mas possui uma UX pior pois cada request feita não possuirá um loading ou uma pré página estática.
+
+✔️ Tempo de Build
+
+❌ UX/Velocidade (Loading a cada página)
+
+✔️ SEO (Primeiro é retornado uma página em branco para o navegador dificultando o trabalho dos crawlers)
 
 ## SSG (Static Side Generation)
 
@@ -26,13 +36,15 @@ Existem dois tipos de SSG:
 
 SSG sem data é uma página simples que não realiza fetch de nenhum dado externo, já SSG com data é uma pagina que possui uma requisição de dados externos.
 
+❌ Tempo de Build
+
 ✔️ Velocidade (Método mais rapido)
 
 ❌ Alterações no DB (Toda vez que tiver alguma alteração no DB é necessario fazer o build novamente)
 
 ## ISR (Incremental Static Regeneration)
 
-ISR é básicamente o SSG com revalidate ele irá gerar páginas estáticas conforme a utilização dos usuários além dos caminhos especificados no getStaticPaths
+ISR é básicamente o SSG com revalidate ele irá gerar páginas estáticas conforme a utilização dos usuários além dos caminhos especificados no getStaticPaths que serão gerados no build de forma estática.
 
 Em getStaticPaths:
 if (fallback === false) return '404 se o path pesquisado no navegador não for especificado em paths'
